@@ -2,8 +2,7 @@
 
 **Project:** Corporación Favorita Grocery Sales Forecasting  
 **Author:** Alberto Diaz Durana  
-**Date Created:** 2025-11-11  
-**Last Updated:** 2025-11-11  
+**Date Created:** 2025-11-XX  
 **Purpose:** Document all input datasets, schemas, and data quality characteristics
 
 ---
@@ -14,7 +13,7 @@ This inventory documents all raw data files from the Kaggle competition, includi
 
 **Data Source:** [Kaggle - Corporación Favorita Grocery Sales Forecasting](https://www.kaggle.com/competitions/favorita-grocery-sales-forecasting/data)
 
-**Download Date:** 2025-11-11  
+**Download Date:** [YYYY-MM-DD]  
 **Location:** `data/raw/`
 
 ---
@@ -23,14 +22,14 @@ This inventory documents all raw data files from the Kaggle competition, includi
 
 | File | Size (MB) | Rows | Columns | Date Range | Purpose |
 |------|-----------|------|---------|------------|---------|
-| train.csv | ~479 | 125,497,040 | 6 | 2013-01-01 to 2017-08-15 | Daily sales transactions |
-| test.csv | ~21 | 3,370,464 | 5 | 2017-08-16 to 2017-08-31 | Prediction targets |
+| train.csv | ~479 | ~125M | 6 | 2013-01-01 to 2017-08-15 | Daily sales transactions |
+| test.csv | TBD | TBD | 5 | 2017-08-16 to 2017-08-31 | Prediction targets |
 | stores.csv | <1 | 54 | 5 | N/A | Store metadata |
 | items.csv | <1 | 4,100 | 4 | N/A | Product metadata |
 | oil.csv | <1 | 1,218 | 2 | 2013-01-01 to 2017-08-31 | Daily oil prices |
 | holidays_events.csv | <1 | 350 | 6 | 2012-03-02 to 2017-12-26 | Holiday calendar |
 | transactions.csv | ~4 | 83,488 | 3 | 2013-01-01 to 2017-08-15 | Daily transaction counts |
-| sample_submission.csv | ~21 | 3,370,464 | 2 | N/A | Submission format example |
+| sample_submission.csv | TBD | TBD | 2 | N/A | Submission format example |
 
 ---
 
@@ -44,23 +43,23 @@ This inventory documents all raw data files from the Kaggle competition, includi
 | Column | Data Type | Description | Example Values | Missing % |
 |--------|-----------|-------------|----------------|-----------|
 | id | int64 | Unique row identifier | 0, 1, 2, ... | 0% |
-| date | string | Transaction date | "2013-01-01" | 0% |
+| date | object (string) | Transaction date | "2013-01-01" | 0% |
 | store_nbr | int64 | Store identifier (1-54) | 1, 2, 3, ... | 0% |
 | item_nbr | int64 | Item identifier | 96995, 99197, ... | 0% |
 | unit_sales | float64 | Number of units sold | 7.0, -2.0, 15.5 | 0% |
-| onpromotion | float64 | Promotion flag | 1.0, 0.0, NaN | 17.26% |
+| onpromotion | object (bool/NaN) | Promotion flag | True, False, NaN | ~16% |
 
 **Key Characteristics:**
-- **Total rows**: 125,497,040
+- **Total rows**: ~125 million (exact count TBD)
 - **Temporal range**: 2013-01-01 to 2017-08-15 (1,688 days)
 - **Unique stores**: 54
-- **Unique items**: 4,100
+- **Unique items**: ~4,100
 - **Negative values**: unit_sales can be negative (product returns)
 - **Float values**: unit_sales can be decimal (e.g., 1.5 kg of cheese)
 - **Missing dates**: Some store-item-date combinations absent (represent zero sales)
 
 **Data Quality Notes:**
-- 21,657,651 onpromotion values are NaN (17.26%)
+- Approximately 16% of onpromotion values are NaN
 - Negative unit_sales values represent returns (need handling decision)
 - File size (~479 MB) requires Dask for efficient loading
 - Date column stored as string (requires pd.to_datetime conversion)
@@ -82,14 +81,14 @@ id,date,store_nbr,item_nbr,unit_sales,onpromotion
 **Schema:**
 | Column | Data Type | Description | Example Values | Missing % |
 |--------|-----------|-------------|----------------|-----------|
-| id | int64 | Unique row identifier | 125497040, ... | 0% |
-| date | string | Prediction date | "2017-08-16", ... | 0% |
+| id | int64 | Unique row identifier | TBD | 0% |
+| date | object (string) | Prediction date | "2017-08-16", ... | 0% |
 | store_nbr | int64 | Store identifier | 1, 2, 3, ... | 0% |
-| item_nbr | int64 | Item identifier | 103665, ... | 0% |
-| onpromotion | float64 | Promotion flag | 1.0, 0.0, NaN | Variable |
+| item_nbr | int64 | Item identifier | TBD | 0% |
+| onpromotion | object (bool/NaN) | Promotion flag | True, False, NaN | TBD% |
 
 **Key Characteristics:**
-- **Total rows**: 3,370,464
+- **Total rows**: TBD (to be counted)
 - **Temporal range**: 2017-08-16 to 2017-08-31 (16 days)
 - **Purpose**: Generate forecasts for this date range
 - **Note**: Our project focuses on Jan-Mar 2014, not this test period
@@ -104,31 +103,28 @@ id,date,store_nbr,item_nbr,unit_sales,onpromotion
 | Column | Data Type | Description | Example Values | Missing % |
 |--------|-----------|-------------|----------------|-----------|
 | store_nbr | int64 | Store identifier (primary key) | 1, 2, 3, ... | 0% |
-| city | string | City name | "Quito", "Guayaquil" | 0% |
-| state | string | State/province name | "Pichincha", "Guayas" | 0% |
-| type | string | Store type | "A", "B", "C", "D", "E" | 0% |
+| city | object (string) | City name | "Quito", "Guayaquil" | 0% |
+| state | object (string) | State/province name | "Pichincha", "Guayas" | 0% |
+| type | object (string) | Store type | "A", "B", "C", "D", "E" | 0% |
 | cluster | int64 | Store cluster (grouping) | 1, 2, 3, ..., 17 | 0% |
 
 **Key Characteristics:**
 - **Total rows**: 54 stores
-- **Unique cities**: 22 cities
-- **Unique states**: 16 states
+- **Unique cities**: TBD (to be counted)
+- **Unique states**: TBD (to be counted, focus on "Guayas")
 - **Store types**: 5 types (A, B, C, D, E)
 - **Clusters**: 17 clusters (grouping of similar stores)
 
 **Guayas Region Filter:**
-- **Guayas stores**: 11 stores (20.4% of total)
-- **Store IDs**: [24, 26, 27, 28, 29, 30, 32, 34, 35, 36, 51]
-- **Cities in Guayas**: Guayaquil (8), Daule (1), Playas (1), Libertad (1)
-- **Store types in Guayas**: A (1), B (1), C (3), D (3), E (3)
-- **Clusters in Guayas**: 1, 3, 6, 10, 17
+- **Guayas stores**: TBD (to be identified in Day 2)
+- **Purpose**: Filter train.csv to Guayas stores only
 
 **Example Rows:**
 ```
 store_nbr,city,state,type,cluster
 1,Quito,Pichincha,D,13
 2,Quito,Pichincha,D,13
-24,Guayaquil,Guayas,D,1
+3,Quito,Pichincha,D,8
 ```
 
 ---
@@ -141,38 +137,20 @@ store_nbr,city,state,type,cluster
 | Column | Data Type | Description | Example Values | Missing % |
 |--------|-----------|-------------|----------------|-----------|
 | item_nbr | int64 | Item identifier (primary key) | 96995, 99197, ... | 0% |
-| family | string | Product family/category | "GROCERY I", "BEVERAGES" | 0% |
+| family | object (string) | Product family/category | "GROCERY I", "BEVERAGES" | 0% |
 | class | int64 | Item class | 1065, 1066, ... | 0% |
 | perishable | int64 | Perishable flag (0 or 1) | 0, 1 | 0% |
 
 **Key Characteristics:**
 - **Total rows**: 4,100 items
 - **Unique families**: 33 product families
-- **Perishable items**: Variable% (weight 1.25 in NWRMSLE)
-- **Non-perishable items**: Variable% (weight 1.0 in NWRMSLE)
+- **Perishable items**: TBD% (weight 1.25 in NWRMSLE)
+- **Non-perishable items**: TBD% (weight 1.0 in NWRMSLE)
 
 **Top-3 Families Filter:**
 - **Selection criteria**: Top-3 families by unique item count
-- **Top-3 families**: 
-  1. GROCERY I - 1,334 items (32.5%)
-  2. BEVERAGES - 613 items (15.0%)
-  3. CLEANING - 446 items (10.9%)
-- **Total items in top-3**: 2,393 items (58.4% of all items)
+- **Top-3 families**: TBD (to be identified in Day 2)
 - **Purpose**: Reduce complexity to manageable scope
-
-**Top-10 Families by Item Count:**
-| Rank | Family | Item Count | % of Total |
-|------|--------|------------|------------|
-| 1 | GROCERY I | 1,334 | 32.5% |
-| 2 | BEVERAGES | 613 | 15.0% |
-| 3 | CLEANING | 446 | 10.9% |
-| 4 | PRODUCE | 306 | 7.5% |
-| 5 | DAIRY | 242 | 5.9% |
-| 6 | PERSONAL CARE | 153 | 3.7% |
-| 7 | BREAD/BAKERY | 134 | 3.3% |
-| 8 | HOME CARE | 108 | 2.6% |
-| 9 | DELI | 91 | 2.2% |
-| 10 | MEATS | 84 | 2.0% |
 
 **Example Rows:**
 ```
@@ -191,14 +169,14 @@ item_nbr,family,class,perishable
 **Schema:**
 | Column | Data Type | Description | Example Values | Missing % |
 |--------|-----------|-------------|----------------|-----------|
-| date | string | Date | "2013-01-01" | 0% |
-| dcoilwtico | float64 | Daily oil price (WTI) | 93.14, 94.72, ... | 3.5% |
+| date | object (string) | Date | "2013-01-01" | 0% |
+| dcoilwtico | float64 | Daily oil price (WTI) | 93.14, 94.72, ... | TBD% |
 
 **Key Characteristics:**
 - **Total rows**: 1,218 days
 - **Temporal range**: 2013-01-01 to 2017-08-31
 - **Missing dates**: Some days may be missing (weekends, holidays)
-- **Missing values**: 43 dcoilwtico values are NaN (3.5% - forward fill strategy)
+- **Missing values**: dcoilwtico may have NaN (forward fill strategy)
 
 **Usage Notes:**
 - Investigate correlation with unit_sales
@@ -208,7 +186,7 @@ item_nbr,family,class,perishable
 **Example Rows:**
 ```
 date,dcoilwtico
-2013-01-01,NaN
+2013-01-01,93.14
 2013-01-02,93.14
 2013-01-03,92.97
 ```
@@ -222,11 +200,11 @@ date,dcoilwtico
 **Schema:**
 | Column | Data Type | Description | Example Values | Missing % |
 |--------|-----------|-------------|----------------|-----------|
-| date | string | Holiday date | "2012-03-02" | 0% |
-| type | string | Holiday type | "Holiday", "Transfer", "Bridge", "Work Day", "Event", "Additional" | 0% |
-| locale | string | Geographic scope | "National", "Regional", "Local" | 0% |
-| locale_name | string | Specific region/city | "Ecuador", "Guayas", "Guayaquil" | 0% |
-| description | string | Holiday name | "Dia de la Madre", "Navidad" | 0% |
+| date | object (string) | Holiday date | "2012-03-02" | 0% |
+| type | object (string) | Holiday type | "Holiday", "Transfer", "Bridge", "Work Day", "Event", "Additional" | 0% |
+| locale | object (string) | Geographic scope | "National", "Regional", "Local" | 0% |
+| locale_name | object (string) | Specific region/city | "Ecuador", "Guayas", "Guayaquil" | 0% |
+| description | object (string) | Holiday name | "Dia de la Madre", "Navidad" | 0% |
 | transferred | bool | Transfer flag | True, False | 0% |
 
 **Key Characteristics:**
@@ -239,7 +217,7 @@ date,dcoilwtico
 - **Transfer days**: Official date vs actual celebration date differ
 - **Bridge days**: Extra days added to extend holidays
 - **Work days**: Makeup days for bridge days
-- **Focus**: Filter to "Guayas" region holidays for analysis
+- **Focus**: Filter to "Guayas" region holidays
 
 **Example Rows:**
 ```
@@ -257,7 +235,7 @@ date,type,locale,locale_name,description,transferred
 **Schema:**
 | Column | Data Type | Description | Example Values | Missing % |
 |--------|-----------|-------------|----------------|-----------|
-| date | string | Transaction date | "2013-01-01" | 0% |
+| date | object (string) | Transaction date | "2013-01-01" | 0% |
 | store_nbr | int64 | Store identifier | 1, 2, 3, ... | 0% |
 | transactions | int64 | Number of transactions | 2111, 1507, ... | 0% |
 
@@ -288,11 +266,10 @@ date,store_nbr,transactions
 **Schema:**
 | Column | Data Type | Description | Example Values |
 |--------|-----------|-------------|----------------|
-| id | int64 | Row identifier (matches test.csv) | 125497040, ... |
-| unit_sales | float64 | Predicted sales | 0.0, 15.3, ... |
+| id | int64 | Row identifier (matches test.csv) | TBD |
+| unit_sales | float64 | Predicted sales | TBD |
 
 **Key Characteristics:**
-- **Total rows**: 3,370,464 (matches test.csv)
 - **Purpose**: Reference format only (not used in our project)
 - **Our forecast format**: Will create custom CSV for Jan-Mar 2014
 
@@ -304,7 +281,7 @@ date,store_nbr,transactions
 
 | Aspect | Status | Notes |
 |--------|--------|-------|
-| Completeness | WARNING | train.csv missing 17.26% onpromotion values, oil.csv has 43 gaps |
+| Completeness | WARNING | train.csv missing 16% onpromotion values, oil.csv has gaps |
 | Consistency | OK | Schemas align across files (store_nbr, item_nbr, date) |
 | Temporal Alignment | OK | train.csv and transactions.csv cover same period |
 | File Sizes | WARNING | train.csv (479 MB) requires Dask for loading |
@@ -312,21 +289,21 @@ date,store_nbr,transactions
 
 ### Key Issues Identified
 
-1. **train.csv onpromotion NaN (17.26%)**: Decision made - fill with False (assume no promotion)
-2. **train.csv negative unit_sales**: Returns vs sales handling decision needed (Day 3)
-3. **train.csv missing dates**: Zero-fill strategy required for complete calendar (Day 3)
-4. **oil.csv gaps (43 values)**: Forward fill or interpolation needed (Day 5)
+1. **train.csv onpromotion NaN (16%)**: Decision needed on imputation strategy
+2. **train.csv negative unit_sales**: Returns vs sales handling decision needed
+3. **train.csv missing dates**: Zero-fill strategy required for complete calendar
+4. **oil.csv gaps**: Forward fill or interpolation needed
 5. **Large file size**: Dask required for train.csv loading
 
-### Action Items
+### Next Steps
 
-- [X] Load all files and verify row counts
-- [X] Convert date columns to datetime
-- [X] Quantify exact missing value percentages
-- [X] Identify Guayas stores (filter stores.csv)
-- [X] Identify top-3 product families (count items per family)
-- [X] Document findings in this inventory
-- [ ] Update decision log with data quality decisions (Day 3)
+- [ ] Load all files and verify row counts
+- [ ] Convert date columns to datetime
+- [ ] Quantify exact missing value percentages
+- [ ] Identify Guayas stores (filter stores.csv)
+- [ ] Identify top-3 product families (count items per family)
+- [ ] Document findings in this inventory
+- [ ] Update decision log with data quality decisions
 
 ---
 
@@ -334,39 +311,15 @@ date,store_nbr,transactions
 
 ### Filtering Criteria
 - **Region**: Guayas state only
-- **Stores**: 11 stores (20.4% of total)
-- **Store IDs**: [24, 26, 27, 28, 29, 30, 32, 34, 35, 36, 51]
-- **Products**: Top-3 families (GROCERY I, BEVERAGES, CLEANING)
-- **Items**: 2,393 items (58.4% of all items)
+- **Stores**: TBD stores (to be identified from stores.csv WHERE state='Guayas')
+- **Products**: Top-3 families by item count (to be calculated)
 - **Sample size**: 300,000 rows (random sample from filtered train.csv)
 
 ### Expected Reduction
-- **Before filtering**: 125,497,040 rows (full train.csv)
-- **After Guayas filter**: ~25M rows estimated (20.4% of stores)
-- **After top-3 families filter**: ~15M rows estimated (58.4% of items)
-- **After 300K sampling**: 300,000 rows (final dataset for development)
-
-### Guayas Store Characteristics
-
-**Cities (4 total):**
-- Guayaquil: 8 stores (72.7%)
-- Daule: 1 store
-- Playas: 1 store
-- Libertad: 1 store
-
-**Store Types (5 types):**
-- Type A: 1 store
-- Type B: 1 store
-- Type C: 3 stores
-- Type D: 3 stores
-- Type E: 3 stores
-
-**Clusters (5 clusters):**
-- Cluster 1: 2 stores
-- Cluster 3: 3 stores
-- Cluster 6: 1 store
-- Cluster 10: 4 stores
-- Cluster 17: 1 store
+- **Before filtering**: ~125M rows (full train.csv)
+- **After Guayas filter**: TBD rows
+- **After top-3 families filter**: TBD rows
+- **After 300K sampling**: 300,000 rows (final dataset)
 
 ---
 
@@ -378,25 +331,8 @@ date,store_nbr,transactions
 
 ---
 
-## Inventory Generation Log
-
-**Day 1 (2025-11-11):**
-- Loaded all 8 CSV files successfully
-- Identified 11 Guayas stores (20.4% of total)
-- Selected top-3 families: GROCERY I (1,334), BEVERAGES (613), CLEANING (446)
-- Documented 125.5M rows in train.csv
-- Exported inventory_summary.csv and inventory_summary.txt to docs/
-
-**Next Steps (Day 2):**
-- Filter train.csv to Guayas stores
-- Filter to top-3 families
-- Random sample 300K rows
-- Export guayas_sample_300k.csv
-
----
-
-**Last Updated:** 2025-11-11 04:45  
-**Status:** Complete - Ready for Day 2
+**Last Updated:** [YYYY-MM-DD]  
+**Status:** Template created - to be filled during Day 1 Part 3
 
 ---
 
