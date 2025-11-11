@@ -15,8 +15,10 @@
 - Days 1-2 completed ahead of schedule (5 hours vs 8 hours allocated)
 - 3-hour buffer now available for expanded EDA (Days 3-5)
 - Added 10 new analyses: store clustering, promotion effectiveness, Pareto analysis, etc.
+- **Added Isolation Forest for robust outlier detection (3-method triangulation)**
 - Established daily review checkpoints for scope adjustment
 - Expanded from 8-step EDA to 18-step comprehensive analysis
+- Total time: 15.5 hours (12 base + 3.5 buffer)
 
 **Status:**
 - ✓ Day 1 Complete: Data inventory (11 Guayas stores, top-3 families identified)
@@ -39,9 +41,9 @@ Conduct comprehensive exploratory data analysis on Guayas sample to understand d
 - Build foundation for feature engineering and modeling phases
 
 **Resources:**
-- Time allocation: 15 hours (12 base + 3 buffer from Days 1-2 efficiency)
-- Time buffer: Built into daily allocations (5 hours per day)
-- Tools: Python, pandas, matplotlib, seaborn, statsmodels
+- Time allocation: 15.5 hours (12 base + 3.5 buffer from Days 1-2 efficiency)
+- Time buffer: Extended by 30 min for comprehensive outlier analysis (IQR + Z-score + Isolation Forest)
+- Tools: Python, pandas, matplotlib, seaborn, statsmodels, scikit-learn
 - Data: guayas_sample_300k.pkl (300K rows, 11 stores, 2,296 items)
 
 ---
@@ -78,10 +80,10 @@ Conduct comprehensive exploratory data analysis on Guayas sample to understand d
 
 | Day | Focus Area | Base Hours | Buffer | Total | Key Deliverables |
 |-----|-----------|------------|--------|-------|------------------|
-| 3 | Data Quality & Store Analysis | 4h | 1h | 5h | Clean data, store performance, item coverage |
+| 3 | Data Quality & Store Analysis | 4h | 1.5h | 5.5h | Clean data, store performance, item coverage |
 | 4 | Temporal Patterns & Product Analysis | 4h | 1h | 5h | Features, seasonality, fast/slow movers |
 | 5 | Context Analysis & Consolidation | 4h | 1h | 5h | Holidays, promotions, perishables, final export |
-| **Total** | | **12h** | **3h** | **15h** | **guayas_prepared.csv + comprehensive EDA report** |
+| **Total** | | **12h** | **3.5h** | **15.5h** | **guayas_prepared.csv + comprehensive EDA report** |
 
 ---
 
@@ -90,7 +92,7 @@ Conduct comprehensive exploratory data analysis on Guayas sample to understand d
 ### Day 3 - Data Quality & Store Analysis
 **Goal:** Clean data, analyze store performance, understand item coverage
 
-**Total Time:** 5 hours (4h base + 1h buffer)
+**Total Time:** 5.5 hours (4h base + 1.5h buffer)
 
 #### Part 0: Data Loading & Initial Checks (30 min)
 **Objective:** Load filtered sample and verify characteristics
@@ -116,20 +118,22 @@ Conduct comprehensive exploratory data analysis on Guayas sample to understand d
 - Cleaned onpromotion column
 - Decision log entry (DEC-003: Fill onpromotion with False)
 
-#### Part 2: Outlier Detection (1 hour)
-**Objective:** Identify and handle outliers in unit_sales
+#### Part 2: Outlier Detection - Three Methods (1 hour 15 min)
+**Objective:** Identify and handle outliers using three complementary methods
 **Activities:**
-- Detect negative sales (13 rows identified)
-- Clip negative values to 0
-- Calculate Z-scores by store-item groups
-- Flag extreme outliers (Z > 3.0)
-- Visualize outlier distribution (boxplot, histogram)
+- Detect and clip negative sales (13 rows identified) to 0
+- **IQR Method (20 min):** Calculate Q1, Q3, IQR per store-item group; flag outliers using 1.5×IQR rule
+- **Z-Score Method (15 min):** Calculate z-scores per store-item group; flag extreme outliers (|z| > 3.0)
+- **Isolation Forest Method (25 min):** Train ML model with features (store, item, sales, day_of_week, month); flag anomalies using multivariate patterns
+- **Method Comparison (15 min):** Create Venn diagram showing overlap; identify high-confidence outliers (flagged by all 3 methods)
+- Visualize outlier distributions (boxplot, histogram, comparison charts)
 - Document outlier handling decision
 **Deliverables:**
-- Outlier analysis report
+- Outlier analysis report (3 methods with comparison)
 - Cleaned unit_sales (negatives → 0)
-- Outlier flags (for potential further investigation)
-- Decision log entry (DEC-004: Clip negative sales to zero)
+- Outlier flags: high-confidence (all 3 agree) vs investigate (1-2 methods)
+- Comparison visualization (Venn diagram, method overlap statistics)
+- Decision log entry (DEC-004: Three-method outlier detection approach)
 
 #### Part 3: Store-Level Performance Analysis (1.5 hours) ← NEW
 **Objective:** Compare performance across 11 Guayas stores
@@ -647,13 +651,14 @@ Day X+1 focus:
 ## Summary
 
 Week 1 (Updated) establishes comprehensive understanding of Guayas sales data by:
-1. Validating data quality and handling missing values/outliers (Days 1-3)
+1. Validating data quality with 3-method outlier detection (IQR + Z-score + Isolation Forest) (Days 1-3)
 2. Analyzing store performance, product dynamics, and item coverage (Day 3)
 3. Engineering features and uncovering temporal patterns (Day 4)
 4. Investigating external factors: holidays, promotions, perishables (Day 5)
 5. Exporting analysis-ready dataset with complete documentation (Day 5)
 
-**Expanded scope uses 3-hour buffer to add 10 high-value analyses:**
+**Expanded scope uses 3.5-hour buffer to add:**
+- **Three-method outlier detection** (IQR + Z-score + Isolation Forest for robust triangulation)
 - Store-level performance comparison
 - Store clustering and city-level patterns  
 - Item coverage matrix
