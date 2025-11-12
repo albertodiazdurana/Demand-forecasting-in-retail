@@ -1,0 +1,144 @@
+
+================================================================================
+WEEK 2 DAY 2: ROLLING STATISTICS FEATURES
+Date: 2025-11-12
+================================================================================
+
+
+unit_sales_7d_avg:
+  description                   : 7-day rolling average of unit_sales
+  type                          : Rolling statistic (mean)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(7, min_periods=1).mean()
+  window                        : 7 days
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Captures recent weekly trend, smooths daily noise
+
+unit_sales_14d_avg:
+  description                   : 14-day rolling average of unit_sales
+  type                          : Rolling statistic (mean)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(14, min_periods=1).mean()
+  window                        : 14 days
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Balances responsiveness with stability, bi-weekly baseline
+
+unit_sales_30d_avg:
+  description                   : 30-day rolling average of unit_sales
+  type                          : Rolling statistic (mean)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(30, min_periods=1).mean()
+  window                        : 30 days
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Long-term monthly baseline, removes short-term fluctuations
+
+unit_sales_7d_std:
+  description                   : 7-day rolling standard deviation of unit_sales
+  type                          : Rolling statistic (volatility)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(7, min_periods=2).std()
+  window                        : 7 days
+  nan_count                     : 19692
+  nan_pct                       : 6.54%
+  mean                          : 4.33
+  median                        : 2.32
+  rationale                     : Captures recent demand volatility, identifies erratic items
+
+unit_sales_14d_std:
+  description                   : 14-day rolling standard deviation of unit_sales
+  type                          : Rolling statistic (volatility)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(14, min_periods=2).std()
+  window                        : 14 days
+  nan_count                     : 19692
+  nan_pct                       : 6.54%
+  mean                          : 4.54
+  median                        : 2.52
+  rationale                     : Medium-term volatility indicator
+
+unit_sales_30d_std:
+  description                   : 30-day rolling standard deviation of unit_sales
+  type                          : Rolling statistic (volatility)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(30, min_periods=2).std()
+  window                        : 30 days
+  nan_count                     : 19692
+  nan_pct                       : 6.54%
+  mean                          : 4.63
+  median                        : 2.59
+  rationale                     : Long-term stability metric, seasonal volatility
+
+================================================================================
+WEEK 2 DAY 2: ROLLING STATISTICS FEATURES
+Date: 2025-11-12
+================================================================================
+
+
+unit_sales_7d_avg:
+  description                   : 7-day rolling average of unit_sales
+  type                          : Rolling statistic (mean)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(7, min_periods=1).mean()
+  window                        : 7 days
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Captures recent weekly trend, smooths daily noise
+
+unit_sales_14d_avg:
+  description                   : 14-day rolling average of unit_sales
+  type                          : Rolling statistic (mean)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(14, min_periods=1).mean()
+  window                        : 14 days
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Balances responsiveness with stability, bi-weekly baseline
+
+unit_sales_30d_avg:
+  description                   : 30-day rolling average of unit_sales
+  type                          : Rolling statistic (mean)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(30, min_periods=1).mean()
+  window                        : 30 days
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Long-term monthly baseline, removes short-term fluctuations
+
+unit_sales_7d_std:
+  description                   : 7-day rolling standard deviation of unit_sales
+  type                          : Rolling statistic (volatility)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(7, min_periods=2).std()
+  window                        : 7 days
+  nan_count                     : 19692
+  nan_pct                       : 6.54%
+  mean                          : 4.33
+  median                        : 2.32
+  rationale                     : Captures recent demand volatility, identifies erratic items
+
+unit_sales_14d_std:
+  description                   : 14-day rolling standard deviation of unit_sales
+  type                          : Rolling statistic (volatility)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(14, min_periods=2).std()
+  window                        : 14 days
+  nan_count                     : 19692
+  nan_pct                       : 6.54%
+  mean                          : 4.54
+  median                        : 2.52
+  rationale                     : Medium-term volatility indicator
+
+unit_sales_30d_std:
+  description                   : 30-day rolling standard deviation of unit_sales
+  type                          : Rolling statistic (volatility)
+  source                        : unit_sales
+  method                        : groupby([store_nbr, item_nbr]).rolling(30, min_periods=2).std()
+  window                        : 30 days
+  nan_count                     : 19692
+  nan_pct                       : 6.54%
+  mean                          : 4.63
+  median                        : 2.59
+  rationale                     : Long-term stability metric, seasonal volatility
