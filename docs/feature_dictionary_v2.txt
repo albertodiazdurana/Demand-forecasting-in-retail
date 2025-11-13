@@ -288,3 +288,125 @@ oil_price_change14:
   mean                          : $-0.00
   std                           : $10.57
   rationale                     : Medium-term oil momentum smooths weekly noise, captures sustained trends
+
+================================================================================
+WEEK 2 DAY 4: AGGREGATION FEATURES
+Date: 2025-11-12
+================================================================================
+
+
+store_avg_sales:
+  description                   : Historical average unit_sales per store
+  type                          : Store aggregation
+  source                        : unit_sales grouped by store_nbr
+  method                        : groupby(store_nbr).mean()
+  level                         : Store (11 unique stores)
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  range                         : 4.20 to 9.63
+  rationale                     : Captures baseline demand level per store (location, size, demographics)
+
+store_median_sales:
+  description                   : Historical median unit_sales per store
+  type                          : Store aggregation
+  source                        : unit_sales grouped by store_nbr
+  method                        : groupby(store_nbr).median()
+  level                         : Store (11 unique stores)
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Robust to outliers, typical transaction size per store
+
+store_std_sales:
+  description                   : Historical standard deviation of unit_sales per store
+  type                          : Store aggregation
+  source                        : unit_sales grouped by store_nbr
+  method                        : groupby(store_nbr).std()
+  level                         : Store (11 unique stores)
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Store-level demand variability, helps quantify forecast uncertainty
+
+cluster_avg_sales:
+  description                   : Historical average unit_sales per cluster
+  type                          : Cluster aggregation
+  source                        : unit_sales grouped by cluster
+  method                        : groupby(cluster).mean()
+  level                         : Cluster (5 unique clusters)
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  range                         : 4.78 to 9.63
+  gap                           : 2.01x
+  rationale                     : Corporate strategic grouping, captures regional/format patterns (2.01x gap)
+
+cluster_median_sales:
+  description                   : Historical median unit_sales per cluster
+  type                          : Cluster aggregation
+  source                        : unit_sales grouped by cluster
+  method                        : groupby(cluster).median()
+  level                         : Cluster (5 unique clusters)
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Robust cluster baseline, less affected by extreme stores
+
+cluster_std_sales:
+  description                   : Historical standard deviation of unit_sales per cluster
+  type                          : Cluster aggregation
+  source                        : unit_sales grouped by cluster
+  method                        : groupby(cluster).std()
+  level                         : Cluster (5 unique clusters)
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Cluster-level variability, strategic segment differences
+
+item_avg_sales:
+  description                   : Historical average unit_sales per item
+  type                          : Item aggregation
+  source                        : unit_sales grouped by item_nbr
+  method                        : groupby(item_nbr).mean()
+  level                         : Item (2,296 unique items)
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  range                         : 1.00 to 74.09
+  rationale                     : Item baseline demand, popular vs niche products
+
+item_median_sales:
+  description                   : Historical median unit_sales per item
+  type                          : Item aggregation
+  source                        : unit_sales grouped by item_nbr
+  method                        : groupby(item_nbr).median()
+  level                         : Item (2,296 unique items)
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  rationale                     : Typical transaction size per item, robust to bulk purchases
+
+item_std_sales:
+  description                   : Historical standard deviation of unit_sales per item
+  type                          : Item aggregation
+  source                        : unit_sales grouped by item_nbr
+  method                        : groupby(item_nbr).std()
+  level                         : Item (2,296 unique items)
+  nan_count                     : 20
+  nan_pct                       : 0.01%
+  rationale                     : Item-level demand stability, erratic vs stable products (20 NaN for single-transaction items)
+
+item_count:
+  description                   : Total number of transactions per item
+  type                          : Item aggregation
+  source                        : unit_sales grouped by item_nbr
+  method                        : groupby(item_nbr).count()
+  level                         : Item (2,296 unique items)
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  range                         : 1 to 400
+  rationale                     : Popularity indicator, frequent vs rare items
+
+item_total_sales:
+  description                   : Cumulative total unit_sales per item
+  type                          : Item aggregation
+  source                        : unit_sales grouped by item_nbr
+  method                        : groupby(item_nbr).sum()
+  level                         : Item (2,296 unique items)
+  nan_count                     : 0
+  nan_pct                       : 0.00%
+  range                         : 1 to 21424
+  rationale                     : Cumulative volume, high-volume staples vs niche products
