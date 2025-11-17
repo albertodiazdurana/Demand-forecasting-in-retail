@@ -750,3 +750,33 @@ item_total_sales:
   nan_pct                       : 0.00%
   range                         : 1 to 21424
   rationale                     : Cumulative volume, high-volume staples vs niche products
+
+================================================================================
+WEEK 2 DAY 5: PROMOTION FEATURES
+Date: 2025-11-12
+================================================================================
+
+
+promo_item_avg_interaction:
+  description         : Interaction: onpromotion × item_avg_sales
+  type                : Promotion interaction
+  source              : onpromotion, item_avg_sales
+  method              : Element-wise multiplication
+  nan_count           : 0
+  nan_pct             : 0.00%
+  range               : 0.00 to 74.09
+  non_zero            : 13,905 (4.6%)
+  correlation         : 0.1549
+  rationale           : Captures differential promotion effects - high-volume items respond differently than low-volume items
+
+promo_cluster_interaction:
+  description         : Interaction: onpromotion × cluster_avg_sales
+  type                : Promotion interaction
+  source              : onpromotion, cluster_avg_sales
+  method              : Element-wise multiplication
+  nan_count           : 0
+  nan_pct             : 0.00%
+  range               : 0.00 to 9.63
+  non_zero            : 13,905 (4.6%)
+  correlation         : 0.0680
+  rationale           : Captures cluster-level promotion strategies and regional promotional effects
