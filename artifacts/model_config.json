@@ -1,0 +1,42 @@
+{
+  "model_type": "LSTM",
+  "version": "1.0",
+  "created_date": "2025-11-20",
+  "model_format": "keras",
+  "performance": {
+    "test_rmse": 6.255191309050118,
+    "test_mae": 3.1066722139102296,
+    "overfitting_ratio": 0.57
+  },
+  "architecture": {
+    "lstm_units": 64,
+    "dense_units": 32,
+    "dropout_rate": 0.2,
+    "total_parameters": 27201,
+    "input_shape": [
+      1,
+      33
+    ]
+  },
+  "training": {
+    "epochs_trained": 28,
+    "batch_size": 32,
+    "optimizer": "adam",
+    "loss": "mse"
+  },
+  "data": {
+    "training_period": "2013-10-01 to 2014-02-21",
+    "n_train_samples": 18905,
+    "n_features": 33
+  },
+  "decisions_applied": [
+    "DEC-013: 7-day gap",
+    "DEC-014: 33 optimized features",
+    "DEC-016: Q4+Q1 temporal consistency"
+  ],
+  "improvement_history": {
+    "day1_baseline": 7.2127,
+    "day5_final": 6.255191309050118,
+    "total_improvement_pct": 13.275315636999766
+  }
+}
