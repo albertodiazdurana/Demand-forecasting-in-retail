@@ -4,8 +4,8 @@
   "created_date": "2025-11-20",
   "model_format": "keras",
   "performance": {
-    "test_rmse": 6.255191309050118,
-    "test_mae": 3.1066722139102296,
+    "test_rmse": 6.352564358960333,
+    "test_mae": 3.1365093345859854,
     "overfitting_ratio": 0.57
   },
   "architecture": {
@@ -19,7 +19,7 @@
     ]
   },
   "training": {
-    "epochs_trained": 28,
+    "epochs_trained": 30,
     "batch_size": 32,
     "optimizer": "adam",
     "loss": "mse"
@@ -36,7 +36,7 @@
   ],
   "improvement_history": {
     "day1_baseline": 7.2127,
-    "day5_final": 6.255191309050118,
-    "total_improvement_pct": 13.275315636999766
+    "day5_final": 6.352564358960333,
+    "total_improvement_pct": 11.925293455150875
   }
 }

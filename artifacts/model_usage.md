@@ -14,5 +14,5 @@ with open('artifacts/feature_columns.json', 'r') as f:
 ```
 
 ## Performance
-- RMSE: 6.2552
-- Total improvement: 13.28%
+- RMSE: 6.3526
+- Total improvement: 11.93%
