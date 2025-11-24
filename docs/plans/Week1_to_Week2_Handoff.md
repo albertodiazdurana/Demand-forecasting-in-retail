@@ -632,23 +632,7 @@ Week 2 focuses on:
 
 ---
 
-## Final Notes
-
-**Week 1 was a success.** Clean data, strong insights, clear priorities, 8.5h buffer.
-
-**Week 2 is about execution.** Follow the MUST → SHOULD → COULD priority framework. Focus on what Week 1 findings tell us will work: lag features (autocorrelation 0.60+), rolling stats (smoothing), oil price (macro indicator).
-
-**Don't overthink.** Week 1 did the hard thinking. Week 2 is implementation: create features, validate, export. Simple and systematic.
-
-**Trust the process.** 15h spent, 8.5h buffer earned. Week 2 has 20h + 8.5h cushion = 28.5h available. More than enough to create 20-30 features with quality checks.
-
-**You're in a strong position.** Final dataset is clean, patterns are validated, roadmap is clear.
-
----
-
 **WEEK 1 COMPLETE. READY FOR WEEK 2 FEATURE DEVELOPMENT.**
-
-**Good luck, Alberto. You've got this! 🚀**
 
 ---
 
