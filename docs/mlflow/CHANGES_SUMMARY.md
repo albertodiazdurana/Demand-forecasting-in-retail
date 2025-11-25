@@ -60,10 +60,10 @@ setup_mlflow("experiment_name")
 ### 3. Comprehensive Documentation
 
 **Files created:**
-- `README_MLFLOW.md` - Quick reference guide
-- `docs/MLFLOW_SETUP.md` - Detailed setup and troubleshooting
-- `docs/MLFLOW_MIGRATION_EXAMPLE.md` - Before/after migration examples
-- `MLFLOW_SUMMARY.txt` - Visual summary
+- `docs/mlflow/README.md` - Quick reference guide
+- `docs/mlflow/SETUP.md` - Detailed setup and troubleshooting
+- `docs/mlflow/MIGRATION_EXAMPLES.md` - Before/after migration examples
+- `docs/mlflow/SUMMARY.txt` - Visual summary
 
 ---
 
@@ -78,12 +78,13 @@ config/
 scripts/
 └── start_mlflow_ui.sh        # MLflow UI startup script (executable)
 
-docs/
-├── MLFLOW_SETUP.md           # Comprehensive setup guide
-└── MLFLOW_MIGRATION_EXAMPLE.md  # Migration examples
-
-README_MLFLOW.md              # Quick reference
-MLFLOW_SUMMARY.txt            # Visual summary
+docs/mlflow/
+├── README.md                 # Quick reference
+├── SETUP.md                  # Comprehensive setup guide
+├── MIGRATION_EXAMPLES.md     # Migration examples
+├── CHANGES_SUMMARY.md        # This file - complete technical summary
+├── MESSAGE_FOR_OTHER_CHAT.md # Template message for sharing changes
+└── SUMMARY.txt               # Visual summary
 ```
 
 ### Modified Files (1)
@@ -174,7 +175,7 @@ setup_mlflow("full_pipeline_model_comparison")
 - `w03_d05_MODEL_artifacts-export.ipynb`
 - `FULL_02_train_final_model.ipynb` (already uses custom setup)
 
-**See:** `docs/MLFLOW_MIGRATION_EXAMPLE.md` for step-by-step examples
+**See:** `docs/mlflow/MIGRATION_EXAMPLES.md` for step-by-step examples
 
 ---
 
@@ -249,10 +250,10 @@ mlflow_results/
 
 ## References
 
-- **Quick Start:** `README_MLFLOW.md`
-- **Full Guide:** `docs/MLFLOW_SETUP.md`
-- **Migration Examples:** `docs/MLFLOW_MIGRATION_EXAMPLE.md`
-- **Visual Summary:** `MLFLOW_SUMMARY.txt`
+- **Quick Start:** `docs/mlflow/README.md`
+- **Full Guide:** `docs/mlflow/SETUP.md`
+- **Migration Examples:** `docs/mlflow/MIGRATION_EXAMPLES.md`
+- **Visual Summary:** `docs/mlflow/SUMMARY.txt`
 
 ---
 
@@ -272,11 +273,11 @@ Changes not staged for commit:
   modified:   .gitignore
 
 Untracked files:
-  MLFLOW_SUMMARY.txt
-  README_MLFLOW.md
+  docs/mlflow/SUMMARY.txt
+  docs/mlflow/README.md
   config/mlflow_config.py
-  docs/MLFLOW_MIGRATION_EXAMPLE.md
-  docs/MLFLOW_SETUP.md
+  docs/mlflow/MIGRATION_EXAMPLES.md
+  docs/mlflow/SETUP.md
   scripts/start_mlflow_ui.sh
 ```
 

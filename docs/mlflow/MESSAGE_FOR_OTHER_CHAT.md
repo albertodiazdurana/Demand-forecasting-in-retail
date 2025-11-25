@@ -24,10 +24,10 @@ I've centralized the MLflow configuration with these new files:
    ```
 
 3. **Documentation:**
-   - `README_MLFLOW.md` - Quick reference
-   - `docs/MLFLOW_SETUP.md` - Full guide
-   - `docs/MLFLOW_MIGRATION_EXAMPLE.md` - Migration examples
-   - `MLFLOW_CHANGES_SUMMARY.md` - Complete summary of changes
+   - `docs/mlflow/README.md` - Quick reference
+   - `docs/mlflow/SETUP.md` - Full guide
+   - `docs/mlflow/MIGRATION_EXAMPLES.md` - Migration examples
+   - `docs/mlflow/CHANGES_SUMMARY.md` - Complete summary of changes
 
 ### Key Changes
 
@@ -52,8 +52,8 @@ setup_mlflow("my_experiment")
 
 ### Files to Review
 Please check these files for full context:
-- `MLFLOW_CHANGES_SUMMARY.md` - Complete technical summary
-- `README_MLFLOW.md` - Quick start guide
+- `docs/mlflow/CHANGES_SUMMARY.md` - Complete technical summary
+- `docs/mlflow/README.md` - Quick start guide
 - `config/mlflow_config.py` - Implementation
 
 All MLflow tracking is now unified in one location. No more "where did my models go?" issues! 🎉
@@ -62,7 +62,7 @@ All MLflow tracking is now unified in one location. No more "where did my models
 
 ## Alternative: Attach File
 
-You can also just share the file `MLFLOW_CHANGES_SUMMARY.md` - it contains all the technical details, migration patterns, and current state of the MLflow setup.
+You can also just share the file `docs/mlflow/CHANGES_SUMMARY.md` - it contains all the technical details, migration patterns, and current state of the MLflow setup.
 
 ---
 
@@ -75,9 +75,9 @@ If you want to give even shorter context:
 - ✅ Created: UI startup script (`scripts/start_mlflow_ui.sh`)
 - ✅ Single tracking location: `mlflow_results/`
 - ✅ All notebooks should use: `from config.mlflow_config import setup_mlflow`
-- ✅ Documentation: `README_MLFLOW.md`, `docs/MLFLOW_SETUP.md`
-- ✅ Migration guide: `docs/MLFLOW_MIGRATION_EXAMPLE.md`
-- ✅ Complete summary: `MLFLOW_CHANGES_SUMMARY.md`
+- ✅ Documentation: `docs/mlflow/README.md`, `docs/mlflow/SETUP.md`
+- ✅ Migration guide: `docs/mlflow/MIGRATION_EXAMPLES.md`
+- ✅ Complete summary: `docs/mlflow/CHANGES_SUMMARY.md`
 
 ---
 

@@ -22,13 +22,13 @@
    └─ One-command MLflow UI startup
    └─ Usage: ./scripts/start_mlflow_ui.sh
 
-3. docs/MLFLOW_SETUP.md
+3. docs/mlflow/SETUP.md
    └─ Comprehensive setup and troubleshooting guide
 
-4. docs/MLFLOW_MIGRATION_EXAMPLE.md
+4. docs/mlflow/MIGRATION_EXAMPLES.md
    └─ Before/after examples for updating notebooks
 
-5. README_MLFLOW.md
+5. docs/mlflow/README.md
    └─ Quick reference guide
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -96,7 +96,7 @@
 📋 NEXT STEPS:
 
    1. Update existing notebooks to use setup_mlflow()
-      (See docs/MLFLOW_MIGRATION_EXAMPLE.md)
+      (See docs/mlflow/MIGRATION_EXAMPLES.md)
 
    2. Start using ./scripts/start_mlflow_ui.sh for consistency
 
@@ -113,5 +113,5 @@
    No more "where did my models go?" 🎉
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║                   For details: See README_MLFLOW.md                           ║
+║                   For details: See docs/mlflow/README.md                           ║
 ╚══════════════════════════════════════════════════════════════════════════════╝

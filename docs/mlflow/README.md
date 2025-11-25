@@ -31,10 +31,10 @@ http://127.0.0.1:5000
 
 | File | Purpose |
 |------|---------|
-| [config/mlflow_config.py](config/mlflow_config.py) | Centralized MLflow configuration |
-| [scripts/start_mlflow_ui.sh](scripts/start_mlflow_ui.sh) | Easy MLflow UI startup |
-| [docs/MLFLOW_SETUP.md](docs/MLFLOW_SETUP.md) | Detailed setup guide |
-| [docs/MLFLOW_MIGRATION_EXAMPLE.md](docs/MLFLOW_MIGRATION_EXAMPLE.md) | Migration examples |
+| [config/mlflow_config.py](../../config/mlflow_config.py) | Centralized MLflow configuration |
+| [scripts/start_mlflow_ui.sh](../../scripts/start_mlflow_ui.sh) | Easy MLflow UI startup |
+| [SETUP.md](SETUP.md) | Detailed setup guide |
+| [MIGRATION_EXAMPLES.md](MIGRATION_EXAMPLES.md) | Migration examples |
 
 ---
 
@@ -102,8 +102,9 @@ mlflow ui --backend-store-uri file://$(pwd)/mlflow_results --port 5000
 
 ## 📚 Documentation
 
-- **Setup Guide:** [docs/MLFLOW_SETUP.md](docs/MLFLOW_SETUP.md)
-- **Migration Examples:** [docs/MLFLOW_MIGRATION_EXAMPLE.md](docs/MLFLOW_MIGRATION_EXAMPLE.md)
+- **Setup Guide:** [SETUP.md](SETUP.md)
+- **Migration Examples:** [MIGRATION_EXAMPLES.md](MIGRATION_EXAMPLES.md)
+- **Change Summary:** [CHANGES_SUMMARY.md](CHANGES_SUMMARY.md)
 
 ---
 

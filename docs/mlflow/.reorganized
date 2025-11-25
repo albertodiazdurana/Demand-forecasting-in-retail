@@ -1,0 +1,18 @@
+# MLflow Documentation Reorganization
+
+Date: 2025-11-25
+
+All MLflow documentation has been consolidated into docs/mlflow/ directory.
+
+Files moved:
+- README_MLFLOW.md → docs/mlflow/README.md
+- MLFLOW_CHANGES_SUMMARY.md → docs/mlflow/CHANGES_SUMMARY.md
+- MESSAGE_FOR_OTHER_CHAT.md → docs/mlflow/MESSAGE_FOR_OTHER_CHAT.md
+- MLFLOW_SUMMARY.txt → docs/mlflow/SUMMARY.txt
+- docs/MLFLOW_SETUP.md → docs/mlflow/SETUP.md
+- docs/MLFLOW_MIGRATION_EXAMPLE.md → docs/mlflow/MIGRATION_EXAMPLES.md
+
+New file created:
+- docs/mlflow/INDEX.md
+
+All internal references updated to reflect new paths.
