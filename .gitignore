@@ -261,3 +261,6 @@ outputs/figures/models/w*_d*_*.png
 
 # Keep final visualizations
 !outputs/figures/final/fig*.png
+
+# old files
+docs/old
