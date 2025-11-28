@@ -34,7 +34,6 @@ http://127.0.0.1:5000
 | [config/mlflow_config.py](../../config/mlflow_config.py) | Centralized MLflow configuration |
 | [scripts/start_mlflow_ui.sh](../../scripts/start_mlflow_ui.sh) | Easy MLflow UI startup |
 | [SETUP.md](SETUP.md) | Detailed setup guide |
-| [MIGRATION_EXAMPLES.md](MIGRATION_EXAMPLES.md) | Migration examples |
 
 ---
 

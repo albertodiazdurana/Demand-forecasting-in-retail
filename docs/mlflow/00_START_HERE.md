@@ -51,20 +51,4 @@ http://127.0.0.1:5000
 
 ---
 
-## 📚 Documentation Files
-
-```
-docs/mlflow/
-├── 00_START_HERE.md          ← You are here!
-├── INDEX.md                  ← Navigation guide
-├── README.md                 ← Quick start (3 steps)
-├── SETUP.md                  ← Full setup guide
-├── MIGRATION_EXAMPLES.md     ← Code examples
-├── CHANGES_SUMMARY.md        ← Technical details
-├── MESSAGE_FOR_OTHER_CHAT.md ← For sharing
-└── SUMMARY.txt               ← Visual summary
-```
-
----
-
 **👉 Start with [README.md](README.md) for the quickest overview!**
