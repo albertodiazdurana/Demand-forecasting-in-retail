@@ -131,8 +131,8 @@ Demand-forecasting-in-retail/
 ├── mlflow_results/                 # Experiment tracking (not in git)
 ├── README.md
 ├── README_MLFLOW.md                # MLflow quick reference
-├── requirements.txt
-└── FULL_02_checkpoint.md           # Production pipeline summary
+└── requirements.txt
+
 ```
 
 ---
